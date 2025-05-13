@@ -1,9 +1,7 @@
 #!/bin/bash
 
-set -e
-
-export PROJECT_ID="woa7019"
-export REGION="us-central1"
+PROJECT_ID="woa7019"
+REGION="us-central1"
 
 install() {
     sudo apt-get update
