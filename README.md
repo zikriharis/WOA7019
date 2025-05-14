@@ -16,14 +16,11 @@ TODO: test location service
 
 prerequisites: install unity remote on iphone, itunes on window
 
-in edit > profile settings > editor:
-
-Device: Any iOS Device OR Your Device (eg. iPhone 12)
-
-open itunes (window)
-connect iphone and window with cable
-trust your computer (iphone)
-open unity remote (iphone)
-play unity simulation (window)
+1. in unity, edit > profile settings > editor > Device: Any iOS Device OR Your Device (eg. iPhone 12)
+2. open itunes (window)
+3. connect iphone and window with cable
+4. trust your computer (iphone)
+5. open unity remote (iphone)
+6. play unity simulation (window)
 
 result: webcamPlane should rotate with iphone, adding NoteCube in different angle will create notes with different rotation value as TextMestPro.text
