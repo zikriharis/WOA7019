@@ -8,13 +8,17 @@ color - lingfen
 
 firebase - xavier
 
+## markerless - yuncheng
+
+TODO: test location service
+
 #### test gryoscope with unity remote on iphone
 
 prerequisites: install unity remote on iphone, itunes on window
 
-in edit > profile settings > editor
+in edit > profile settings > editor:
 
-    All iOS or your device
+Device: Any iOS Device OR Your Device (eg. iPhone 12)
 
 open itunes (window)
 connect iphone and window with cable
