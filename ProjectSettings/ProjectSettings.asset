@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: c6e65b04b21e3bd41a290f3b5859a818
+  productGUID: 63f389f55676a6646b815a60b44b95fb
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: ARStickyNotesMarkerless
+  productName: markerless2
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -164,7 +164,6 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.WOA7019.MarkerlessStickyNotes
     Standalone: com.DefaultCompany.3D-Project
   buildNumber:
     Standalone: 0
@@ -748,7 +747,8 @@ PlayerSettings:
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: FUSION_LOGLEVEL_INFO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -759,7 +759,7 @@ PlayerSettings:
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
-  allowUnsafeCode: 0
+  allowUnsafeCode: 1
   useDeterministicCompilation: 1
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
@@ -769,14 +769,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: ARStickyNotesMarkerless
+  metroPackageName: markerless2
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: ARStickyNotesMarkerless
+  metroApplicationDescription: markerless2
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -848,10 +848,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2916e031-5624-43ae-bde6-88bc28afb465
+  cloudProjectId: 1ab039ca-6542-4e8f-a6d7-44e3b054285c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: ARStickyNotesMarkerless
+  projectName: markerless2
   organizationId: hacked0253
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
