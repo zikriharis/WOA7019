@@ -8,19 +8,15 @@ color - lingfen
 
 firebase - xavier
 
-## markerless - yuncheng
+#### XR Origin
 
-TODO: test location service
+- PlacementWithManyController
+    - StickyNote 1 (Note with Some Buttons)
 
-#### test gryoscope with unity remote on iphone
+###### XR Simulation
 
-prerequisites: install unity remote on iphone, itunes on window
-
-1. in unity, edit > profile settings > editor > Device: Any iOS Device OR Your Device (eg. iPhone 12)
-2. open itunes (window)
-3. connect iphone and window with cable
-4. trust your computer (iphone)
-5. open unity remote (iphone)
-6. play unity simulation (window)
-
-result: webcamPlane should rotate with iphone, adding NoteCube in different angle will create notes with different rotation value as TextMestPro.text
+1. enable XR simulation in project settings
+2. enter play mode
+3. while holding right click, move the simulated camera with wasd
+4. horizontal and vertical plane detected will appear as blue mesh (may differ on your device)
+5. test touch and drag function with mouse (without holding right click)
