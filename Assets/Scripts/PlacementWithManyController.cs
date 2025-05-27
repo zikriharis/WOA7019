@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using UnityEngine.InputSystem; // <-- IMPORTANT: Add this namespace!
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ARRaycastManager))]
 
@@ -22,9 +22,17 @@ public class PlacementWithManyController : MonoBehaviour
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     float verticalPlaneThreshold = 0.5f;
-    float selectionProximityThreshold = 0.1f;
+    float selectionProximityThreshold = 0.5f; // Need Testing
 
     private GameObject selectedInstance = null;
+
+    private Color[] availableColors = new Color[] {
+        new Color(1.0f, 1.0f, 0.6f, 1.0f),   // Light Yellow
+        new Color(1.0f, 0.8f, 0.8f, 1.0f),   // Light Pink
+        new Color(0.8f, 1.0f, 0.8f, 1.0f),   // Light Green
+        new Color(0.8f, 0.9f, 1.0f, 1.0f),   // Light Blue
+        new Color(1.0f, 0.9f, 0.6f, 1.0f)    // Light Orange (Peach)
+    };
 
     void Awake()
     {
@@ -40,15 +48,37 @@ public class PlacementWithManyController : MonoBehaviour
             Debug.Log($"[New Input System] Touch Began at: {touchPosition}");
 
             GameObject pressedObject = GetSelectedInstance(touchPosition);
-
             if (pressedObject != null)
             {
+                foreach (GameObject instance in addedInstances)
+                {
+                    Button colourButton = GetColourButton(instance);
+
+                    if (colourButton != null)
+                    {
+                        colourButton.onClick.RemoveListener(ChangeColour);
+                        Debug.Log($"Remove listener of 'Button - Change Colour' on {instance.GetInstanceID()}.");
+                    }
+                }
+
                 selectedInstance = pressedObject;
-                Debug.Log($"selectedInstance is set to: {selectedInstance.name}.");
+                Debug.Log($"selectedInstance is set to: {selectedInstance.GetInstanceID()}.");
+                
+                Button newButton = GetColourButton(selectedInstance);
+
+                if (newButton != null)
+                {
+                    newButton.onClick.AddListener(ChangeColour);
+                    Debug.Log($"Added listener to 'Button - Change Colour' on {selectedInstance.GetInstanceID()}.");
+                }
+                else
+                {
+                    Debug.LogWarning($"'Button - Change Colour' not found on {selectedInstance.GetInstanceID()}.");
+                }
             }
             else
             {
-                selectedInstance = null; 
+                selectedInstance = null;
                 PlaceObject();
             }
         }
@@ -61,8 +91,31 @@ public class PlacementWithManyController : MonoBehaviour
             GameObject pressedObject = GetSelectedInstance(touchPosition);
             if (pressedObject != null)
             {
+                foreach (GameObject instance in addedInstances)
+                {
+                    Button colourButton = GetColourButton(instance);
+
+                    if (colourButton != null)
+                    {
+                        colourButton.onClick.RemoveListener(ChangeColour);
+                        Debug.Log($"Remove listener of 'Button - Change Colour' on {instance.GetInstanceID()}.");
+                    }
+                }
+
                 selectedInstance = pressedObject;
-                Debug.Log($"selectedInstance is set to: {selectedInstance.name}.");
+                Debug.Log($"selectedInstance is set to: {selectedInstance.GetInstanceID()}.");
+                
+                Button newButton = GetColourButton(selectedInstance);
+
+                if (newButton != null)
+                {
+                    newButton.onClick.AddListener(ChangeColour);
+                    Debug.Log($"Added listener to 'Button - Change Colour' on {selectedInstance.GetInstanceID()}.");
+                }
+                else
+                {
+                    Debug.LogWarning($"'Button - Change Colour' not found on {selectedInstance.GetInstanceID()}.");
+                }
             }
             else
             {
@@ -93,6 +146,43 @@ public class PlacementWithManyController : MonoBehaviour
                 MoveSelectedObject();
             }
         }
+    }
+
+    private void ChangeColour()
+    {
+        Image backgroundImage = GetNoteBackground(selectedInstance);
+        if (backgroundImage == null) return;
+
+        Color randomColor = availableColors[Random.Range(0, availableColors.Length)];
+        Debug.Log($"Random color: {availableColors[0]}"); //output: RGBA(1.000, 0.000, 0.000, 1.000)
+        backgroundImage.color = randomColor;
+        //backgroundImage.transform.SetAsLastSibling();
+
+        Debug.Log($"Changed color of {selectedInstance.GetInstanceID()} to {randomColor}");
+    }
+
+    private Image GetNoteBackground(GameObject selectedInstance)
+    {
+        if (selectedInstance == null) return null;
+
+        Transform bgTransform = selectedInstance.transform.Find("Canvas/NoteBackground");
+        if (bgTransform != null)
+        {
+            return bgTransform.GetComponent<Image>();
+        }
+        return null;
+    }
+
+    private Button GetColourButton(GameObject selectedInstance)
+    {
+        if (selectedInstance == null) return null;
+
+        Transform buttonTransform = selectedInstance.transform.Find("Canvas/Button - Change Colour");
+        if (buttonTransform != null)
+        {
+            return buttonTransform.GetComponent<Button>();
+        }
+        return null;
     }
 
     private void PlaceObject()
@@ -174,7 +264,7 @@ public class PlacementWithManyController : MonoBehaviour
 
             selectedInstance.transform.position = hitPose.position;
             selectedInstance.transform.rotation = finalRotationForMove;
-            Debug.Log($"Moved selected object: {selectedInstance.name}.");
+            Debug.Log($"Moved selected object: {selectedInstance.GetInstanceID()}.");
         }
     }
 
